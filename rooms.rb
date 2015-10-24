@@ -13,20 +13,20 @@ require_relative "spaces.rb"
 	space4 = Spaces.new("mountain")
 	space5 = Spaces.new("town")
 
-	space1.add_direction({direction: "e", space: space2})
-	space1.add_direction({direction: "w", space: space3})
-	space1.add_direction({direction: "s", space: space4})
+	space1.add_direction({symbol: "e", space: space2})
+	space1.add_direction({symbol: "w", space: space3})
+	space1.add_direction({symbol: "s", space: space4})
 
 
-	space2.add_direction({direction: "w", space: space1})
-	space2.add_direction({direction: "n", space: space5})
+	space2.add_direction({symbol: "w", space: space1})
+	space2.add_direction({symbol: "n", space: space5})
 
-	space3.add_direction({direction: "e", space: space1})
+	space3.add_direction({symbol: "e", space: space1})
 
 	
-	space4.add_direction({direction: "n", space: space1})
+	space4.add_direction({symbol: "n", space: space1})
 
-	space5.add_direction({direction: "s", space: space2})
+	space5.add_direction({symbol: "s", space: space2})
 
 	Game.new.play([space1, space2, space3, space4, space5])
 
