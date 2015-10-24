@@ -4,10 +4,10 @@ require_relative "spaces.rb"
 require_relative "commandline.rb"
 require_relative "trigger.rb"
 require_relative "spaces.rb"
-	
+require_relative "inventory.rb"
 
 
-	space1 = Spaces.new("forest. It is very cold",[],[Trigger.new("yell", "No one can hear you", false)])
+	space1 = Spaces.new("forest. It is very cold",[],[Trigger.new("yell", "No one can hear you", false)], [Inventory.new("sword")])
 	space2 = Spaces.new("dark house. It is very silent", ["ghost"], [Trigger.new("cry", "The ghost scares you. Game over", true), Trigger.new("yell", "You scared the ghost", false)])
 	space3 = Spaces.new("beach")
 	space4 = Spaces.new("mountain")

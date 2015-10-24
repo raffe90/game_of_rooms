@@ -4,17 +4,23 @@ class Game
 		@game_over = false
 	end
 
-	def get_direction
+	def get_input
 		puts ">"
 		gets.chomp
 	end
 
-	def verify_direction(direction, current_space)
-		if current_space.direction?(direction)
-			new_space = current_space.new_direction(direction)
+	def verify_command(command, current_space)
+		if current_space.direction?(command)
+			new_space = current_space.new_direction(command)
 			current_space = new_space[:space]
-		elsif current_space.trigger?(direction)
-			current_space.handle_trigger(direction)
+		elsif current_space.trigger?(command)
+			current_space.handle_trigger(command)
+		elsif current_space.user_objects?(command)
+			current_space.handle_user_objects(command)
+		elsif current_space.inventory?(command)
+			current_space.handle_inventory(command)
+		elsif command.downcase == 'inventory'
+			current_space.show_inventory 
 		else
 			puts direction.size > 1 ? "I don't understand" : "There is no exit there"
 		end
@@ -25,9 +31,8 @@ class Game
 		current_space = spaces.sample
 		while !@game_over
 			current_space.print_message
-			direction = get_direction
-			current_space = verify_direction(direction, current_space)
+			current_command = get_input
+			current_space = verify_command(current_command, current_space)
 		end
 	end
-	
 end
